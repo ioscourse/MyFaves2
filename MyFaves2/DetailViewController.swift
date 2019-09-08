@@ -1,34 +1,31 @@
 //
 //  DetailViewController.swift
-//  MyFaves2
+//  mf
 //
-//  Created by Charles Konkol on 9/11/17.
-//  Copyright © 2018 RockValleyCollege. All rights reserved.
-//  Updated 9/8/19
+//  Created by Charles Konkol on 9/8/19.
+//  Copyright © 2019 Charles Konkol. All rights reserved.
+//
 
 import UIKit
+import WebKit
 
 class DetailViewController: UIViewController {
 
     @IBOutlet weak var detailDescriptionLabel: UILabel!
 
-    @IBOutlet weak var WebSite: UIWebView!
+    @IBOutlet weak var WebSite: WKWebView!
     
-
+    
     func configureView() {
         // Update the user interface for the detail item.
-        if detailItem != nil {
-            //1) Comment Out Next 3 Lines
+        if detailItem != "" {
 //            if let label = detailDescriptionLabel {
 //                label.text = detail.description
 //            }
-            
-            //2) Replace code with below
             if let myWebview = WebSite {
-                if let url = URL(string: detailItem as! String) {
+                if let url = URL(string: detailItem) {
                     let request = URLRequest(url: url)
-                     myWebview.scalesPageToFit = true
-                    myWebview.loadRequest(request)
+                    myWebview.load(request)
                 }
             }
         }
@@ -36,17 +33,12 @@ class DetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        // Do any additional setup after loading the view.
         configureView()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-    //3) Chamge to AnyObject?
-    var detailItem: AnyObject? {
+    //3) Change to String?
+    var detailItem: String? {
         didSet {
             // Update the view.
             configureView()
