@@ -35,12 +35,14 @@ class MasterViewController: UITableViewController {
         // 4) Add items to 2 arrays
         //Menus
         ListOfPhotos = [
-            UIImage(named: "mall.png")!,
-            UIImage(named: "bikes.jpg")!,
-            UIImage(named: "googles.png")!]
+            UIImage(named: "mall.jpg")!,
+            UIImage(named: "bike.jpg")!,
+            UIImage(named: "googles.jpg")!,
+            UIImage(named: "rvc.jpg")!
+        ]
         
-        ListOfFavs = ["Mall","Biking", "Google"]
-        FavDetails = ["http://www.shopcherryvalemall.com/","http://www.bicycling.com", "http://www.google.com"]
+        ListOfFavs = ["Home","Mall","Biking", "Google"]
+        FavDetails = ["https://www.rockvalleycollege.edu/","http://www.shopcherryvalemall.com/","http://www.bicycling.com", "http://www.google.com"]
         
         if let split = self.splitViewController {
             let controllers = split.viewControllers
@@ -76,7 +78,7 @@ class MasterViewController: UITableViewController {
                 // 6) replace code with below code until line 75
                 let object = FavDetails![indexPath.row]
                 let controller = (segue.destination as! UINavigationController).topViewController as! DetailViewController
-                controller.detailItem = object as AnyObject as? NSDate
+                controller.weburl = (object as AnyObject as? String)!
                 controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem
                 controller.navigationItem.leftItemsSupplementBackButton = true
                 controller.navigationItem.title = ListOfFavs![indexPath.row]
@@ -124,6 +126,7 @@ class MasterViewController: UITableViewController {
     
     
 }
+//10 Add image extension
 extension UIImage {
     
     func resize(maxWidthHeight : Double)-> UIImage? {
