@@ -16,18 +16,29 @@ class DetailViewController: UIViewController {
 
     @IBOutlet weak var WebSite: WKWebView!
     
+    var weburl:String = ""
     
     func configureView() {
+        
 //2 Update the user interface for the detailitem.
-        if detailItem != "" {
+        if weburl != "" {
 //3 Comment out next 3 lines
 //            if let label = detailDescriptionLabel {
 //                label.text = detail.description
 //            }
 
-//4 Add next 6 likes of code
+//4 Add next 16 likes of code.
             if let myWebview = WebSite {
-                if let url = URL(string: detailItem!) {
+                if let url = URL(string: weburl) {
+                    let request = URLRequest(url: url)
+                    myWebview.load(request)
+                }
+            }
+        }else{
+            //Defaul Home Page Loads when App first runs
+            if let myWebview = WebSite {
+                title = "Home"
+                if let url = URL(string: "https://www.rockvalleycollege.edu") {
                     let request = URLRequest(url: url)
                     myWebview.load(request)
                 }
@@ -41,13 +52,13 @@ class DetailViewController: UIViewController {
         configureView()
     }
 
-//4) Change to String?
-    var detailItem: String? {
-        didSet {
-            // Update the view.
-            configureView()
-        }
-    }
+//4) Comment Out Next Three Lines
+//    var detailItem: String? {
+//        didSet {
+//            // Update the view.
+//            configureView()
+//        }
+//    }
 
 
 }
