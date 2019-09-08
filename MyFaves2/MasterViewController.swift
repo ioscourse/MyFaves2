@@ -76,7 +76,7 @@ class MasterViewController: UITableViewController {
                 // 6) replace code with below code until line 75
                 let object = FavDetails![indexPath.row]
                 let controller = (segue.destination as! UINavigationController).topViewController as! DetailViewController
-                controller.detailItem = object as AnyObject
+                controller.detailItem = object as AnyObject as? NSDate
                 controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem
                 controller.navigationItem.leftItemsSupplementBackButton = true
                 controller.navigationItem.title = ListOfFavs![indexPath.row]
