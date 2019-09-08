@@ -7,6 +7,7 @@
 //
 
 import UIKit
+//1 Add import
 import WebKit
 
 class DetailViewController: UIViewController {
@@ -17,11 +18,14 @@ class DetailViewController: UIViewController {
     
     
     func configureView() {
-        // Update the user interface for the detail item.
+//2 Update the user interface for the detailitem.
         if detailItem != "" {
+//3 Comment out next 3 lines
 //            if let label = detailDescriptionLabel {
 //                label.text = detail.description
 //            }
+
+//4 Add next 6 likes of code
             if let myWebview = WebSite {
                 if let url = URL(string: detailItem) {
                     let request = URLRequest(url: url)
@@ -37,7 +41,7 @@ class DetailViewController: UIViewController {
         configureView()
     }
 
-    //3) Change to String?
+//4) Change to String?
     var detailItem: String? {
         didSet {
             // Update the view.
