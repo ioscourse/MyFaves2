@@ -27,7 +27,7 @@ class DetailViewController: UIViewController {
 
 //4 Add next 6 likes of code
             if let myWebview = WebSite {
-                if let url = URL(string: detailItem) {
+                if let url = URL(string: detailItem!) {
                     let request = URLRequest(url: url)
                     myWebview.load(request)
                 }
