@@ -52,7 +52,7 @@ class DetailViewController: UIViewController {
         configureView()
     }
 
-//4) Comment Out Next Three Lines
+//5) Comment Out Next Three Lines
 //    var detailItem: String? {
 //        didSet {
 //            // Update the view.
